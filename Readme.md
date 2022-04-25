@@ -155,6 +155,7 @@ def follows(prod_rules: dict, firsts_: dict):
 ### Explanation:
 We loop through all non terminals in follows() function. Which calls findFollow() for each non-terminal.
 Inside the findFollow() function
+
     1. We iterate through all production rules for each Non terminals
     2. If right side of the Non terminal  (NT, the one we are working with) has a terminal we push it to the list
     3. If we find non terminal we keep finding follow
