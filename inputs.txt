@@ -1,0 +1,13 @@
+E->TE'
+E'->+TE'|#
+T->FT'
+T'->*FT'|#
+F->(E)|i
+end
+
+S->ACB|Cbb|Ba
+A->da|BC
+B->g|#
+C->h|#
+end
+
