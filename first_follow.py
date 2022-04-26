@@ -58,7 +58,7 @@ def findFollow(NT,prod_rules: "dict[list,str]", follows_, firsts_):
                         follows_[NT].extend(follows_[nt])
                     elif 'A' <= rule[i + 1] <= 'Z':
                         NT_ = rule[i+1]
-                        if rule[i+2] == "'":
+                        if i+2 < len(rule) and rule[i+2] == "'":
                             NT_ += rule[i+2]
                         follows_[NT].extend(firsts_[NT_])
                         follows_[NT].extend(follows_[nt])
@@ -73,7 +73,7 @@ def firsts(prod_rules: dict):
     for NT in prod_rules:
         firsts_[NT] = findFirst(NT, prod_rules)
     for NT in firsts_:
-        print(fore.BLUE + style.BOLD + f"FIRST({NT}) = " + '{' + f"{','.join(firsts_[NT])}" + '}' + style.RESET)
+        print(f"FIRST({NT}) = " + '{' + f"{','.join(firsts_[NT])}" + '}')
     return firsts_
 
 
@@ -90,7 +90,7 @@ def follows(prod_rules: dict, firsts_: dict):
     for NT in follows_:
         follows_[NT] = unique(follows_[NT],removeNull=True)
     for NT in follows_:
-        print(fore.GREEN + style.BOLD + f"FOLLOW({NT}) = " + '{' + f"{','.join(follows_[NT])}" + '}' + style.RESET)
+        print(f"FOLLOW({NT}) = " + '{' + f"{','.join(follows_[NT])}" + '}')
     return follows_
 
 
